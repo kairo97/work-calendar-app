@@ -1,13 +1,24 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
+var times = ['9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm'];
+var input = $('.description')
+var saveBtn = $('.saveBtn');
+
 $(function () {
-dayjs().format(dddd, mmmm, d)
-$("#saveBtn").click(function(e){
-    localStorage.setItem('.description', text);
-    localStorage.getitem('.description', text);
-})}
-)
+var today = dayjs().format('dddd, MMMM D, YYYY');
+$('#currentDay').text(today);
+var saveInfo = function (event) {
+    event.preventDefault();
+    localStorage.setItem('input', JSON.stringify(input));
+    var project = localStorage.getItem('input')
+    project = JSON.parse(project);
+    console.log(project);
+    }
+
+saveBtn.on('click', saveInfo);
+})
+
 
 
   // TODO: Add a listener for click events on the save button. This code should
@@ -27,4 +38,3 @@ $("#saveBtn").click(function(e){
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
-  // TODO: Add code to display the current date in the header of the page.
