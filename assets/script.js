@@ -1,23 +1,37 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-var times = ['9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm'];
-var input = $('.description')
-var saveBtn = $('.saveBtn');
-
+var hour = $('.hour')
+var timeNow = dayjs().format('HH:mm');
+var times = ['9', '10', '11', '12', '13', '14', '15', '16', '17'];
+var input1= $('#9amtext');
+var input2= $('#10amtext');
+var input3 = $('#11amtext');
+var input4 = $('#12pmtext');
+var input5 = $('#1pmtext');
+var input6 = $('#2pmtext');
+var input7 = $('#3pmtext');
+var input8 = $('#4pmmtext');
+var input9 = $('#5pmtext');
+var saveBtn = $('#saveBtn');
+var tenAm = $('hour10');
 $(function () {
-var today = dayjs().format('dddd, MMMM D, YYYY');
+var today = dayjs().format('dddd, MMMM D, YYYY [at] hh:mm ');
 $('#currentDay').text(today);
-var saveInfo = function (event) {
-    event.preventDefault();
-    localStorage.setItem('input', JSON.stringify(input));
-    var project = localStorage.getItem('input')
-    project = JSON.parse(project);
-    console.log(project);
-    }
 
-saveBtn.on('click', saveInfo);
-})
+var saveInfoH9 = function (event) {
+    event.preventDefault();
+    localStorage.setItem('input1', JSON.stringify(input1));
+    localStorage.getItem('input1');
+    console.log(input1);
+    }
+function getTime(){
+    var rightNow = dayjs().format('HH')
+}
+saveBtn.on('click', saveInfoH9);
+
+}
+)
 
 
 
