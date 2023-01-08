@@ -3,35 +3,29 @@
 // in the html.
 var hour = $('.hour')
 var timeNow = dayjs().format('HH:mm');
-var times = ['9', '10', '11', '12', '13', '14', '15', '16', '17'];
-var input1= $('#9amtext');
-var input2= $('#10amtext');
-var input3 = $('#11amtext');
-var input4 = $('#12pmtext');
-var input5 = $('#1pmtext');
-var input6 = $('#2pmtext');
-var input7 = $('#3pmtext');
-var input8 = $('#4pmmtext');
-var input9 = $('#5pmtext');
+var schedule = ['#9amtext, #10amtext, #11amtext, #12pmtext, #1pmtext, #2pmtext, #3pmtext, #4pmmtext, #5pmtext'];
+var times = ['#hour-9, #hour-10, #hour-11, #hour-12, #hour-1, #hour-2, #hour-3, #hour-4, #hour-6'];
 var saveBtn = $('#saveBtn');
 var tenAm = $('hour10');
 $(function () {
 var today = dayjs().format('dddd, MMMM D, YYYY [at] hh:mm ');
 $('#currentDay').text(today);
 
-var saveInfoH9 = function (event) {
-    event.preventDefault();
+if (timeNow == times.length+9) {
+    $('.description').addClass('present')
+} else if (timeNow <= times.length+9) {
+    $('.description').addClass('past')
+} else {
+    $('.description').addClass('future')
+}
+
+var saveInfo = function (event) {
     localStorage.setItem('input1', JSON.stringify(input1));
     localStorage.getItem('input1');
     console.log(input1);
-    }
-function getTime(){
-    var rightNow = dayjs().format('HH')
-}
-saveBtn.on('click', saveInfoH9);
+    };
 
-}
-)
+saveBtn.on('click', saveInfo);})
 
 
 
